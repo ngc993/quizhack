@@ -1,7 +1,10 @@
-import { facts, questions, topics, TopicId, Question } from '../data/questions';
+import { facts, questions as baseQuestions, topics, TopicId, Question } from '../data/questions';
+import { extraQuestions } from '../data/extraQuestions';
 import { answerQuizQuestion, createSimulation, gradeQuiz, QuizQuestion } from '../core/quizEngine';
 import { loadProgress, recordAnswer, recordQuizAttempt, resetProgress, saveProgress, topicStats, ProgressState } from '../store/progressStore';
 import '../styles/app.css';
+
+const questions: Question[] = [...baseQuestions, ...extraQuestions];
 
 let state: ProgressState = loadProgress();
 let currentTopic: TopicId = 'security';
